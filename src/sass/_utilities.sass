@@ -1,0 +1,40 @@
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @-o-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
+=animation($str)
+  -webkit-animation: #{$str}
+  -moz-animation: #{$str}
+  -ms-animation: #{$str}
+  -o-animation: #{$str}
+  animation: #{$str}
+
+=border-radius($radius)
+  -webkit-border-radius: $radius
+  border-radius: $radius
+  background-clip: padding-box
+
+=box-shadow($properties...)
+  -webkit-box-shadow: $properties
+  -moz-box-shadow: $properties
+  box-shadow: $properties
+
+=transform($properties...)
+  -ms-transform: $properties
+  -webkit-transform: $properties
+  transform: $properties
+
+=transition($properties...)
+  -webkit-transition: $properties
+  -moz-transition: $properties
+  -ms-transition: $properties
+  -o-transition: $properties
+  transition: $properties
