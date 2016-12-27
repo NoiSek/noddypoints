@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -65,26 +65,30 @@
 	}
 
 	function spawnParticles(container, n) {
+	  var className = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'particle';
+
 	  var particles = [];
 
 	  for (var i = 0; i < n; i++) {
 	    var el = document.createElement('div');
-	    el.className = "particle particle-" + i;
+	    el.className = className + ' ' + className + '-' + i;
 	    container.appendChild(el);
 
-	    particles[i] = new Particle(el, i);
+	    particles[i] = new Particle(el, i, className);
 	  }
 
 	  return particles;
 	}
 
 	var Particle = function () {
-	  function Particle(el, number) {
+	  function Particle(el, number, type) {
 	    _classCallCheck(this, Particle);
 
 	    this.state = {
 	      el: el,
-	      number: number
+	      number: number,
+	      type: type,
+	      'dead': false
 	    };
 
 	    // Easier to set it up this way.
@@ -92,8 +96,12 @@
 	  }
 
 	  _createClass(Particle, [{
-	    key: "die",
+	    key: 'die',
 	    value: function die() {
+	      if (this.state.dead === true) {
+	        return;
+	      }
+
 	      var birth = new Date();
 	      var now = new Date();
 	      now.setMilliseconds(now.getMilliseconds() + Utils.randomRange(200, 3000));
@@ -102,25 +110,45 @@
 	      this.state.birth = birth;
 	      this.state.expiration = now;
 	      this.state.el.style = "";
-	      this.state.curve = [{
-	        "x": Utils.randomRange(50, 200),
-	        "y": Utils.randomRange(-100, 250) // 0, 25 is up drift
-	      }, {
-	        "x": Utils.randomRange(-30, 400),
-	        "y": Utils.randomRange(-25, 75)
-	      }, {
-	        "x": Utils.randomRange(0, 5),
-	        "y": Utils.randomRange(0, 95)
-	      }];
+
+	      if (this.state.type === 'particle-x') {
+	        this.state.curve = [{
+	          "x": Utils.randomRange(-window.xContainerWidth, 0),
+	          "y": Utils.randomRange(-350, 350)
+	        }, {
+	          "x": Utils.randomRange(-window.xContainerWidth, 0),
+	          "y": Utils.randomRange(-350, 350)
+	        }, {
+	          "x": Utils.randomRange(-window.xContainerWidth, 0),
+	          "y": Utils.randomRange(-50, 50)
+	        }];
+	      } else {
+	        this.state.curve = [{
+	          "x": Utils.randomRange(50, 200),
+	          "y": Utils.randomRange(-100, 250) // 0, 25 is up drift
+	        }, {
+	          "x": Utils.randomRange(-30, 400),
+	          "y": Utils.randomRange(-25, 75)
+	        }, {
+	          "x": Utils.randomRange(0, 5),
+	          "y": Utils.randomRange(0, 95)
+	        }];
+	      }
 	    }
 	  }, {
-	    key: "step",
+	    key: 'step',
 	    value: function step() {
 	      var lifetime = this.state.expiration - this.state.birth;
 	      var elapsed = this.state.expiration - window.currentTime;
 
 	      if (elapsed <= 0) {
+	        if (this.state.type === 'particle-x') {
+	          this.state.el.parentElement.removeChild(this.state.el);
+	          this.state.dead = true;
+	        }
+
 	        this.die();
+
 	        return;
 	      }
 
@@ -132,7 +160,7 @@
 	      // Set opacity
 	      this.state.el.style.opacity = String(t);
 	      // Set position
-	      this.state.el.style.transform = "translateX(" + x + "px) translateY(" + y + "px";
+	      this.state.el.style.transform = 'translateX(' + x + 'px) translateY(' + y + 'px';
 	    }
 	  }]);
 
@@ -141,6 +169,8 @@
 
 	var Main = function () {
 	  function Main() {
+	    var _this = this;
+
 	    _classCallCheck(this, Main);
 
 	    this.fps = 60;
@@ -149,21 +179,29 @@
 	    elements.bar = document.getElementsByClassName("bar")[0];
 	    elements.fill = document.getElementsByClassName("fill")[0];
 	    elements.particleContainer = document.getElementsByClassName("particle-container")[0];
+	    elements.particleXContainer = document.getElementsByClassName("particle-x-container")[0];
 
 	    var particles = spawnParticles(elements.particleContainer, 10);
 
 	    this.state = {
 	      elements: elements,
-	      particles: particles
+	      particles: particles,
+	      'finished': false
 	    };
+
+	    setTimeout(function () {
+	      _this.state.xParticles = spawnParticles(elements.particleXContainer, 100, 'particle-x');
+	      _this.state.finished = true;
+	    }, 1500);
 	  }
 
 	  _createClass(Main, [{
-	    key: "loop",
+	    key: 'loop',
 	    value: function loop() {
-	      var _this = this;
+	      var _this2 = this;
 
 	      window.currentTime = new Date();
+	      window.xContainerWidth = this.state.elements.particleXContainer.offsetWidth;
 
 	      var _iteratorNormalCompletion = true;
 	      var _didIteratorError = false;
@@ -190,8 +228,39 @@
 	        }
 	      }
 
+	      if (this.state.finished === true) {
+	        this.state.xParticles = this.state.xParticles.filter(function (e, i) {
+	          return e.state.dead === false;
+	        });
+
+	        var _iteratorNormalCompletion2 = true;
+	        var _didIteratorError2 = false;
+	        var _iteratorError2 = undefined;
+
+	        try {
+	          for (var _iterator2 = this.state.xParticles[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	            var xParticle = _step2.value;
+
+	            xParticle.step();
+	          }
+	        } catch (err) {
+	          _didIteratorError2 = true;
+	          _iteratorError2 = err;
+	        } finally {
+	          try {
+	            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	              _iterator2.return();
+	            }
+	          } finally {
+	            if (_didIteratorError2) {
+	              throw _iteratorError2;
+	            }
+	          }
+	        }
+	      }
+
 	      setTimeout(function () {
-	        window.requestAnimationFrame(_this.loop.bind(_this));
+	        window.requestAnimationFrame(_this2.loop.bind(_this2));
 	      }, 1000 / this.fps);
 	    }
 	  }]);
