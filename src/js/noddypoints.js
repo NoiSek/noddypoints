@@ -50,6 +50,10 @@
 
 	var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
 
+	var _TaskManager = __webpack_require__(5);
+
+	var _TaskManager2 = _interopRequireDefault(_TaskManager);
+
 	var _Counter = __webpack_require__(4);
 
 	var _Counter2 = _interopRequireDefault(_Counter);
@@ -58,13 +62,17 @@
 
 	var bar = new _ProgressBar2.default();
 	var counter = new _Counter2.default(1200);
+	var taskManager = new _TaskManager2.default();
 
-	var promise = counter.start();
+	setTimeout(function () {
+	  taskManager.start().then(function (_) {
+	    counter.start().then(function (_) {
+	      bar.playGrowAnimation();
+	    });
+	  });
+	}, 2000);
+
 	bar.loop();
-
-	promise.then(function () {
-	  bar.playGrowAnimation();
-	});
 
 /***/ },
 /* 1 */
@@ -404,8 +412,6 @@
 	      "incrementCounter": 0,
 	      "speed": 200
 	    };
-
-	    this.promise = undefined;
 	  }
 
 	  _createClass(Counter, [{
@@ -491,6 +497,66 @@
 	}();
 
 	exports.default = Counter;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var TaskManager = function () {
+	  function TaskManager(value) {
+	    _classCallCheck(this, TaskManager);
+
+	    var elements = {};
+	    elements.todo = document.getElementsByClassName('todo')[0];
+	    elements.tasks = Array.from(document.getElementsByClassName('test'));
+
+	    this.state = {
+	      "elements": elements,
+	      "finished": false
+	    };
+	  }
+
+	  _createClass(TaskManager, [{
+	    key: 'start',
+	    value: function start() {
+	      var _this = this;
+
+	      var promise = new Promise(function (resolve, reject) {
+	        var animationDelay = 200;
+
+	        _this.state.elements.tasks.map(function (task, i, a) {
+	          var delay = i === 0 ? 0 : i * animationDelay + i * 1000;
+
+	          setTimeout(function () {
+	            task.className = task.className + " drop-in";
+
+	            if (i === a.length - 1) {
+	              setTimeout(function () {
+	                resolve(true);
+	              }, delay);
+	            }
+	          }, delay);
+	        });
+	      });
+
+	      return promise;
+	    }
+	  }]);
+
+	  return TaskManager;
+	}();
+
+	exports.default = TaskManager;
 
 /***/ }
 /******/ ]);

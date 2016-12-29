@@ -16,8 +16,6 @@ export default class Counter {
       "incrementCounter": 0,
       "speed": 200
     };
-
-    this.promise = undefined;
   }
 
   rapidifySpeedMostFastlyBuckaroo() {
