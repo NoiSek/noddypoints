@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Thambi|Faster+One|Press+Start+2P|Bungee+Shade')
+
 @import 'reset'
 @import 'utilities'
 @import 'animations'
@@ -16,10 +18,54 @@ body
   background: hsl(270, 45%, 30%)
   //+animation(body-glow ease 3s forwards infinite alternate)
 
+.background-plate
+  background: url('http://saylua.com/static/img/bg/6.jpg')
+  background: url('/src/img/festival.jpg')
+  background-size: cover
+
+  opacity: 0.2
+
+  position: fixed
+
+  height: 100%
+  width: 100%
+
+  height: 100vh
+  width: 100vw
+
+  z-index: -2
+
+.background-nonsense
+  font-family: 'Bungee Shade', cursive
+  font-size: 48em
+
+  position: fixed
+  top: 0px
+  left: 0px
+
+  height: 100%
+  width: 100%
+
+  height: 100vh
+  width: 100vw
+
+  z-index: -1
+
+  .nonsense
+    display: block
+
+    color: hsl(270, 75%, 12%)
+
+    transform: rotateZ(-20deg)
+
+    animation: nonsense-color-fade 5s forwards infinite alternate
+
+
 .upper-section
   display: flex
   align-items: center
   justify-content: center
+  flex-direction: column
 
   height: 50vh
 
@@ -27,8 +73,6 @@ body
     display: block
     border: 1px solid hsla(269, 29%, 44%, 1)
     box-shadow: 0px 3px 1px 3px rgba(0, 0, 0, 0.15)
-
-    margin-top: -50px
 
     height: 100px
     width: 80%
@@ -38,21 +82,50 @@ body
     transform-origin: center center
     perspective: 1000px
 
+  .counter-container
+    height: 150px
+    width: 80%
+
+    margin-top: -125px
+
+  .counter
+    display: inline-block
+    color: hsl(61, 100%, 50%) // hsl(330, 75%, 49%)
+
+    font-family: 'Baloo Thambi', cursive
+
+    font-size: 3.8em
+
+  .counter.increment
+    animation-name: counter-increment
+    animation-duration: 200ms
+    animation-timing-function: ease
+
+  .counter.finished
+    +animation(counter-final 1s ease forwards)
+
   .fill
     background: hsl(166, 67%, 52%)
+    background: -moz-linear-gradient(top, hsl(171,67%,52%) 1%, hsl(180,95%,45%) 100%)
+    background: -webkit-linear-gradient(top, hsl(171,67%,52%) 1%, hsl(180, 95%, 45%) 100%)
+    background: linear-gradient(to bottom, hsl(171,67%,52%) 1%, hsl(180, 95%, 45%) 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33d6bd', endColorstr='#06dddd',GradientType=0 )
+
     display: block
 
     position: relative
 
     height: 100%
+    width: 0%
 
     +box-shadow(0px 0px 10px hsla(180, 63%, 54%, 0.8))
 
-    animation-name: grow-shrink, final-glow, final-pulse
-    animation-delay: 0s, 2s, 500ms
-    animation-duration: 2s, 3s, 2s
-    animation-fill-mode: forwards
-    animation-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96), ease, ease-in-out
+    &.animate
+      animation-name: grow-shrink, final-glow, final-pulse
+      animation-delay: 0s, 2s, 1800ms
+      animation-duration: 2s, 3s, 2000ms
+      animation-fill-mode: forwards
+      animation-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96), ease, ease-in-out
 
 
   .particle-container
@@ -88,6 +161,9 @@ body
     +box-shadow(1px 2px 10px rgba(255, 255, 255, 0.15))
     +border-radius(8px)
 
+    &.hidden
+      display: none
+
   .particle-x
     @extend .particle
 
@@ -100,3 +176,7 @@ body
 
     +box-shadow(0px 0px 10px rgba(255, 255, 255, 0.35))
     +border-radius(10px)
+
+
+.lower-section
+  display: block

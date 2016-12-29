@@ -6,6 +6,43 @@
   100%
     background: hsl(270, 45%, 30%)
 
++keyframes(counter-increment)
+  0%
+    transform: scale(1) rotateZ(0deg)
+    filter: brightness(100%)
+  35%
+    transform: scale(1.05) rotateZ(-1deg)
+    filter: brightness(185%)
+  50%
+    filter: brightness(100%)
+  100%
+    transform: scale(1) rotateZ(0deg)
+
++keyframes(counter-final)
+  0%
+    transform: scale(1) rotateZ(0deg)
+    filter: brightness(100%)
+  15%
+    transform: scale(0.95)
+  30%
+    filter: brightness(150%)
+  60%
+    filter: brightness(100%)
+  100%
+    transform: scale(1.05) rotateZ(-1deg)
+
++keyframes(counter-final-loop)
+  0%
+    transform: scale(1.1) rotateZ(1.5deg)
+  25%
+    transform: scale(1) rotateZ(0deg)
+  50%
+    transform: scale(1.1) rotateZ(-1.5deg)
+  75%
+    transform: scale(1) rotateZ(0deg)
+  100%
+    transform: scale(1.1) rotateZ(1.5deg)
+
 +keyframes(pulse-glow)
   0%
     +box-shadow(0px 0px 5px hsla(190, 63%, 54%, 0.8))
@@ -22,15 +59,26 @@
 
 +keyframes(final-pulse)
   0%
-    background: hsl(166, 67%, 52%)
+    -webkit-filter: brightness(100%)
+    filter: brightness(100%)
   50%
-    background: hsl(166, 80%, 65%)
+    -webkit-filter: brightness(125%)
+    filter: brightness(125%)
   100%
-    background: hsl(166, 67%, 52%)
+    -webkit-filter: brightness(100%)
+    filter: brightness(100%)
 
 +keyframes(grow-shrink)
   0%
-    width: 10%
+    width: 0%
 
   100%
     width: 60%
+
++keyframes(nonsense-color-fade)
+  0%
+    color: hsl(270, 75%, 12%)
+  50%
+    color: hsl(0, 75%, 12%)
+  100%
+    color: hsl(270, 75%, 12%)
