@@ -9,33 +9,64 @@
     <link rel="stylesheet" href="src/css/style.css">
   </head>
   <body>
-    <div class="background-plate"></div>
-    <div class="background-nonsense"><span class="nonsense">Wow! Amazing!</span></div>
-    <div class="upper-section">
-      <div class="counter-container">
-        <div class="counter"><span class="points">0</span> <span class="description">Noddy Points</span><span class="modifier">!</span></div>
-      </div>
-      <div class="bar">
-        <div class="fill">
-          <div class="particle-container">
+    <canvas class="canvas-stars" height="270" width="480"></canvas>
+    <canvas class="canvas-background" height="270" width="480"></canvas>
+    <div class="container">
+      <div class="left">
+        <div class="todo-box">
+          <div class="upper-section">
+            <div class="counter-container">
+              <div class="counter"><span class="points">0</span> <span class="description">Noddy Points</span><span class="modifier">!</span></div>
+            </div>
+            <div class="bar">
+              <div class="fill">
+                <div class="particle-container">
+                </div>
+                <div class="particle-x-container">
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="particle-x-container">
+          <div class="lower-section">
+            <div class="todo">
+              <ul>
+                <li class="test">Done Thing</li>
+                <li class="test">Other Task</li>
+                <li class="test">Really Long Objective</li>
+                <li class="test">Unfinished Accomplishment</li>
+              </ul>
+            </div>
+            <div class="ranks">
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="lower-section">
-      <div class="todo">
-        <ul>
-          <li class="test">Done Thing</li>
-          <li class="test">Other Task</li>
-          <li class="test">Really Long Objective</li>
-          <li class="test">Unfinished Accomplishment</li>
-        </ul>
+      <div class="right">
+        <div class="message">
+          <h3 class="message-header"><span>The</span> <span>President</span> <span>is</span> <span>in</span> <span>Danger!</span></h3>
+          <p class="message-body">Are you a bad enough dude to save the president?</p>
+        </div>
       </div>
-      <div class="ranks">
-      </div>
-    </div>
+      <svg width="0" height="0">
+        <filter id="aberration">
+          <feColorMatrix type="matrix"
+            result="red_"
+            values="4 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 1 0"/>
+          <feOffset in="red_" dx="2" dy="0" result="red"/>
+          <feColorMatrix type="matrix"
+            in="SourceGraphic"
+            result="blue_"
+            values="0 0 0 0 0
+                    0 3 0 0 0
+                    0 0 10 0 0
+                    0 0 0 1 0"/>
+          <feOffset in="blue_" dx="-3" dy="0" result="blue"/>
+          <feBlend mode="screen" in="red" in2="blue"/>
+        </filter>
+      </svg>
     <script type="text/javascript" src="src/js/noddypoints.js"></script>
   </body>
 </html>

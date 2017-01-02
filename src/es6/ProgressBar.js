@@ -25,7 +25,7 @@ export default class ProgressBar {
     elements.particleXContainer = document.getElementsByClassName("particle-x-container")[0];
 
     let particles = spawnParticles(elements.particleContainer, 10);
-    let xParticles = spawnParticles(elements.particleXContainer, 100, 'particle-x');
+    let xParticles = spawnParticles(elements.particleXContainer, 50, 'particle-x');
 
     this.state = {
       elements,

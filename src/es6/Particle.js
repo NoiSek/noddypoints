@@ -19,21 +19,21 @@ export default class Particle {
     // On our first loop, initialize
     if (this.state.initialized === false) {
       let birth = new Date();
-      let now = new Date();
-      now.setMilliseconds(now.getMilliseconds() + Utils.randomRange(200, 3000));
+      let expiration = new Date();
+      expiration.setMilliseconds(expiration.getMilliseconds() + Utils.randomRange(200, 3000));
 
       this.state.birth = birth;
-      this.state.expiration = now;
+      this.state.expiration = expiration;
 
       if (this.state.type === 'particle-x') {
         this.state.curve = [
           {
-            "x": Utils.randomRange(-(window.xContainerWidth), 0),
-            "y": Utils.randomRange(-350, 350)
+            "x": Utils.randomRange(-(window.xContainerWidth) - 100, 100),
+            "y": Utils.randomRange(-150, 150)
           },
           {
-            "x": Utils.randomRange(-(window.xContainerWidth), 0),
-            "y": Utils.randomRange(-350, 350)
+            "x": Utils.randomRange(-(window.xContainerWidth) - 100, 100),
+            "y": Utils.randomRange(-150, 150)
           },
           {
             "x": Utils.randomRange(-(window.xContainerWidth), 0),
@@ -52,7 +52,7 @@ export default class Particle {
           },
           {
             "x": Utils.randomRange(0, 5),
-            "y": Utils.randomRange(0, 95)
+            "y": Utils.randomRange(0, 40)
           }
         ];
       }

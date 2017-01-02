@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Baloo+Thambi|Press+Start+2P|Bungee+Shade')
-
 @import 'reset'
+@import 'fonts'
 @import 'utilities'
 @import 'animations'
 
@@ -14,17 +13,18 @@ body, html
   overflow: hidden
 
 body
-  //background: hsl(269, 38%, 31%)
-  background: hsl(270, 45%, 30%)
+  display: flex
+  background: hsl(270, 45%, 30%) //background: hsl(269, 38%, 31%)
   //+animation(body-glow ease 3s forwards infinite alternate)
 
-.background-plate
-  background: url('../img/festival.jpg')
-  background-size: cover
+canvas
+  image-rendering: -moz-pixelated
+  image-rendering: -o-pixelated
+  image-rendering: -webkit-pixelated
+  image-rendering: pixelated
 
-  opacity: 0.2
-
-  position: fixed
+.canvas-background
+  position: absolute
 
   height: 100%
   width: 100%
@@ -34,13 +34,8 @@ body
 
   z-index: -2
 
-.background-nonsense
-  font-family: 'Bungee Shade', cursive
-  font-size: 48em
-
-  position: fixed
-  top: 0px
-  left: 0px
+.canvas-stars
+  position: absolute
 
   height: 100%
   width: 100%
@@ -50,34 +45,52 @@ body
 
   z-index: -1
 
-  .nonsense
-    display: block
+.container
+  display: flex
 
-    color: hsl(270, 75%, 12%)
+.left
+  display: flex
+  align-items: center
+  justify-content: center
 
-    transform: rotateZ(-20deg)
+  height: 100%
+  width: 40%
 
-    animation: nonsense-color-fade 5s forwards infinite alternate
+  height: 100vh
+  width: 40vw
 
+.left .todo-box
+  background: hsl(183, 16%, 28%) //hsl(183, 10%, 65%)
+  overflow: hidden
 
-.upper-section
+  height: 2px
+  width: 2px
+
+  +border-radius(25px)
+
+  animation-name: todo-crt-flash-in
+  animation-delay: 500ms
+  animation-duration: 400ms
+  animation-fill-mode: forwards
+  animation-timing-function: ease-in-out
+
+.left .todo-box .upper-section
   display: flex
   align-items: center
   justify-content: center
   flex-direction: column
 
+  padding-top: 75px
+
   height: 40%
   width: 100%
-
-  height: 40vh
-  width: 100vw
 
   .bar
     display: block
     border: 1px solid hsla(269, 29%, 44%, 1)
     box-shadow: 0px 3px 1px 3px rgba(0, 0, 0, 0.15)
 
-    height: 100px
+    height: 45px
     width: 80%
 
     transform: rotateZ(-1deg)
@@ -95,9 +108,14 @@ body
     display: inline-block
     color: hsl(61, 100%, 50%) // hsl(330, 75%, 49%)
 
-    font-family: 'Baloo Thambi', cursive
+    font-family: 'Lady Radical', cursive
+    text-shadow: 3px 4px hsla(0, 61%, 33%, 0.45)
 
     font-size: 3.8em
+
+    position: relative
+
+    -webkit-filter: none
 
   .counter.increment
     animation-name: counter-increment
@@ -181,16 +199,13 @@ body
     +border-radius(10px)
 
 
-.lower-section
+.left .todo-box .lower-section
   display: block
-  //background: hsla(263, 73%, 23%, 1)
   height: 60%
   width: 100%
 
-  height: 60vh
-  width: 100vw
-
   .todo
+
     margin: 0 auto
     padding: 25px
 
@@ -200,18 +215,60 @@ body
     color: #ffffff
 
     font-family: "Press Start 2p"
-    font-size: 3em
+    font-size: 0.8em
     font-weight: 600
 
     text-transform: uppercase
 
-    line-height: 2.5em
-    letter-spacing: 15px
+    line-height: 1.8em
+    letter-spacing: 5px
 
     li
       opacity: 0
       visibility: hidden
 
-      &.drop-in
-        animation: task-drop-in 1s ease forwards
+      margin-bottom: 1.5em
 
+      &.drop-in
+        animation: task-drop-in 150ms ease forwards
+
+.right
+  display: flex
+  align-items: center
+  justify-content: center
+
+  height: 100%
+  width: 60%
+
+  height: 100vh
+  width: 60vw
+
+  .message
+    padding: 1em
+
+  .message .message-header
+
+    font-family: "Lady Radical"
+    font-size: 8em
+    line-height: 1.2em
+
+    // This provides our bitmap text gradient.
+    span
+      background: #ef2f2f
+
+      background: -moz-linear-gradient(top, hsl(0,86%,56%) 0%, hsl(0,86%,56%) 5%, hsl(19,86%,56%) 5%, hsl(19,86%,56%) 19%, hsl(32,84%,55%) 19%, hsl(32,84%,55%) 36%, hsl(0,100%,95%) 36%, hsl(0,100%,95%) 94%, hsl(0,0%,100%) 94%)
+      background: -webkit-linear-gradient(top, hsl(0,86%,56%) 0%, hsl(0,86%,56%) 5%, hsl(19,86%,56%) 5%, hsl(19,86%,56%) 19%, hsl(32,84%,55%) 19%, hsl(32,84%,55%) 36%, hsl(0,100%,95%) 36%, hsl(0,100%,95%) 94%, hsl(0,0%,100%) 94%)
+      background: linear-gradient(to bottom, hsl(0,86%,56%) 0%, hsl(0,86%,56%) 5%, hsl(19,86%,56%) 5%, hsl(19,86%,56%) 19%, hsl(32,84%,55%) 19%, hsl(32,84%,55%) 36%, hsl(0,100%,95%) 36%, hsl(0,100%,95%) 94%, hsl(0,0%,100%) 94%)
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef2f2f', endColorstr='#ffffff', GradientType=0 )
+
+      -webkit-background-clip: text
+      background-clip: text
+
+      -webkit-text-fill-color: transparent
+      text-fill-color: transparent
+
+  .message .message-body
+    color: #fff
+    font-size: 2em
+    font-family: "Press Start 2p"
+    line-height: 1.8em

@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Baloo+Thambi|Press+Start+2P|Bungee+Shade");
 /* http://meyerweb.com/eric/tools/css/reset/
  * v2.0 | 20110126
  * License: none (public domain) */
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -45,6 +45,11 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+@font-face {
+  font-family: "Lady Radical";
+  src: url("../fonts/lady_radical-webfont.woff2") format("woff2"), url("../fonts/lady_radical-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
 @-webkit-keyframes body-glow {
   0% {
     background: #4c2b8c; }
@@ -78,7 +83,7 @@ table {
     transform: scale(1.05) rotateZ(-1deg);
     filter: brightness(185%); }
   50% {
-    filter: brightness(100%); }
+    filter: brightness(100%) url(#aberration); }
   100% {
     transform: scale(1) rotateZ(0deg); } }
 @-moz-keyframes counter-increment {
@@ -89,7 +94,7 @@ table {
     transform: scale(1.05) rotateZ(-1deg);
     filter: brightness(185%); }
   50% {
-    filter: brightness(100%); }
+    filter: brightness(100%) url(#aberration); }
   100% {
     transform: scale(1) rotateZ(0deg); } }
 @-ms-keyframes counter-increment {
@@ -100,7 +105,7 @@ table {
     transform: scale(1.05) rotateZ(-1deg);
     filter: brightness(185%); }
   50% {
-    filter: brightness(100%); }
+    filter: brightness(100%) url(#aberration); }
   100% {
     transform: scale(1) rotateZ(0deg); } }
 @-o-keyframes counter-increment {
@@ -111,7 +116,7 @@ table {
     transform: scale(1.05) rotateZ(-1deg);
     filter: brightness(185%); }
   50% {
-    filter: brightness(100%); }
+    filter: brightness(100%) url(#aberration); }
   100% {
     transform: scale(1) rotateZ(0deg); } }
 @keyframes counter-increment {
@@ -122,7 +127,7 @@ table {
     transform: scale(1.05) rotateZ(-1deg);
     filter: brightness(185%); }
   50% {
-    filter: brightness(100%); }
+    filter: brightness(100%) url(#aberration); }
   100% {
     transform: scale(1) rotateZ(0deg); } }
 @-webkit-keyframes counter-final {
@@ -352,53 +357,38 @@ table {
     box-shadow: 0px 0px 10px rgba(64, 212, 212, 0.8); } }
 @-webkit-keyframes final-pulse {
   0% {
-    -webkit-filter: brightness(100%);
     filter: brightness(100%); }
   50% {
-    -webkit-filter: brightness(125%);
     filter: brightness(125%); }
   100% {
-    -webkit-filter: brightness(100%);
     filter: brightness(100%); } }
 @-moz-keyframes final-pulse {
   0% {
-    -webkit-filter: brightness(100%);
     filter: brightness(100%); }
   50% {
-    -webkit-filter: brightness(125%);
     filter: brightness(125%); }
   100% {
-    -webkit-filter: brightness(100%);
     filter: brightness(100%); } }
 @-ms-keyframes final-pulse {
   0% {
-    -webkit-filter: brightness(100%);
     filter: brightness(100%); }
   50% {
-    -webkit-filter: brightness(125%);
     filter: brightness(125%); }
   100% {
-    -webkit-filter: brightness(100%);
     filter: brightness(100%); } }
 @-o-keyframes final-pulse {
   0% {
-    -webkit-filter: brightness(100%);
     filter: brightness(100%); }
   50% {
-    -webkit-filter: brightness(125%);
     filter: brightness(125%); }
   100% {
-    -webkit-filter: brightness(100%);
     filter: brightness(100%); } }
 @keyframes final-pulse {
   0% {
-    -webkit-filter: brightness(100%);
     filter: brightness(100%); }
   50% {
-    -webkit-filter: brightness(125%);
     filter: brightness(125%); }
   100% {
-    -webkit-filter: brightness(100%);
     filter: brightness(100%); } }
 @-webkit-keyframes grow-shrink {
   0% {
@@ -463,7 +453,7 @@ table {
 @-webkit-keyframes task-drop-in {
   0% {
     opacity: 0;
-    transform: translateY(-200px);
+    transform: translateY(-25px);
     visibility: visible; }
   100% {
     opacity: 1;
@@ -472,7 +462,7 @@ table {
 @-moz-keyframes task-drop-in {
   0% {
     opacity: 0;
-    transform: translateY(-200px);
+    transform: translateY(-25px);
     visibility: visible; }
   100% {
     opacity: 1;
@@ -481,7 +471,7 @@ table {
 @-ms-keyframes task-drop-in {
   0% {
     opacity: 0;
-    transform: translateY(-200px);
+    transform: translateY(-25px);
     visibility: visible; }
   100% {
     opacity: 1;
@@ -490,7 +480,7 @@ table {
 @-o-keyframes task-drop-in {
   0% {
     opacity: 0;
-    transform: translateY(-200px);
+    transform: translateY(-25px);
     visibility: visible; }
   100% {
     opacity: 1;
@@ -499,12 +489,87 @@ table {
 @keyframes task-drop-in {
   0% {
     opacity: 0;
-    transform: translateY(-200px);
+    transform: translateY(-25px);
     visibility: visible; }
   100% {
     opacity: 1;
     transform: translateY(0px);
     visibility: visible; } }
+@-webkit-keyframes todo-crt-flash-in {
+  0% {
+    filter: brightness(800%);
+    height: 2px;
+    width: 2px; }
+  10% {
+    filter: brightness(1000%); }
+  80% {
+    height: 2px;
+    width: 450px; }
+  100% {
+    filter: brightness(100%);
+    height: 800px;
+    width: 450px;
+    overflow: visible; } }
+@-moz-keyframes todo-crt-flash-in {
+  0% {
+    filter: brightness(800%);
+    height: 2px;
+    width: 2px; }
+  10% {
+    filter: brightness(1000%); }
+  80% {
+    height: 2px;
+    width: 450px; }
+  100% {
+    filter: brightness(100%);
+    height: 800px;
+    width: 450px;
+    overflow: visible; } }
+@-ms-keyframes todo-crt-flash-in {
+  0% {
+    filter: brightness(800%);
+    height: 2px;
+    width: 2px; }
+  10% {
+    filter: brightness(1000%); }
+  80% {
+    height: 2px;
+    width: 450px; }
+  100% {
+    filter: brightness(100%);
+    height: 800px;
+    width: 450px;
+    overflow: visible; } }
+@-o-keyframes todo-crt-flash-in {
+  0% {
+    filter: brightness(800%);
+    height: 2px;
+    width: 2px; }
+  10% {
+    filter: brightness(1000%); }
+  80% {
+    height: 2px;
+    width: 450px; }
+  100% {
+    filter: brightness(100%);
+    height: 800px;
+    width: 450px;
+    overflow: visible; } }
+@keyframes todo-crt-flash-in {
+  0% {
+    filter: brightness(800%);
+    height: 2px;
+    width: 2px; }
+  10% {
+    filter: brightness(1000%); }
+  80% {
+    height: 2px;
+    width: 450px; }
+  100% {
+    filter: brightness(100%);
+    height: 800px;
+    width: 450px;
+    overflow: visible; } }
 body, html {
   height: 100%;
   width: 100%;
@@ -513,75 +578,98 @@ body, html {
   overflow: hidden; }
 
 body {
+  display: flex;
   background: #4d2a6f; }
 
-.background-plate {
-  background: url("../img/festival.jpg");
-  background-size: cover;
-  opacity: 0.2;
-  position: fixed;
+canvas {
+  image-rendering: -moz-pixelated;
+  image-rendering: -o-pixelated;
+  image-rendering: -webkit-pixelated;
+  image-rendering: pixelated; }
+
+.canvas-background {
+  position: absolute;
   height: 100%;
   width: 100%;
   height: 100vh;
   width: 100vw;
   z-index: -2; }
 
-.background-nonsense {
-  font-family: "Bungee Shade", cursive;
-  font-size: 48em;
-  position: fixed;
-  top: 0px;
-  left: 0px;
+.canvas-stars {
+  position: absolute;
   height: 100%;
   width: 100%;
   height: 100vh;
   width: 100vw;
   z-index: -1; }
-  .background-nonsense .nonsense {
-    display: block;
-    color: #1f0836;
-    transform: rotateZ(-20deg);
-    animation: nonsense-color-fade 5s forwards infinite alternate; }
 
-.upper-section {
+.container {
+  display: flex; }
+
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 40%;
+  height: 100vh;
+  width: 40vw; }
+
+.left .todo-box {
+  background: #3c5253;
+  overflow: hidden;
+  height: 2px;
+  width: 2px;
+  -webkit-border-radius: 25px;
+  border-radius: 25px;
+  background-clip: padding-box;
+  animation-name: todo-crt-flash-in;
+  animation-delay: 500ms;
+  animation-duration: 400ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out; }
+
+.left .todo-box .upper-section {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding-top: 75px;
   height: 40%;
-  width: 100%;
-  height: 40vh;
-  width: 100vw; }
-  .upper-section .bar {
+  width: 100%; }
+  .left .todo-box .upper-section .bar {
     display: block;
     border: 1px solid #6f5091;
     box-shadow: 0px 3px 1px 3px rgba(0, 0, 0, 0.15);
-    height: 100px;
+    height: 45px;
     width: 80%;
     transform: rotateZ(-1deg);
     transform-style: preserve-3d;
     transform-origin: center center;
     perspective: 1000px; }
-  .upper-section .counter-container {
+  .left .todo-box .upper-section .counter-container {
     height: 150px;
     width: 80%;
     margin-top: -125px; }
-  .upper-section .counter {
+  .left .todo-box .upper-section .counter {
     display: inline-block;
     color: #fbff00;
-    font-family: "Baloo Thambi", cursive;
-    font-size: 3.8em; }
-  .upper-section .counter.increment {
+    font-family: "Lady Radical", cursive;
+    text-shadow: 3px 4px rgba(135, 33, 33, 0.45);
+    font-size: 3.8em;
+    position: relative;
+    -webkit-filter: none; }
+  .left .todo-box .upper-section .counter.increment {
     animation-name: counter-increment;
     animation-duration: 200ms;
     animation-timing-function: ease; }
-  .upper-section .counter.finished {
+  .left .todo-box .upper-section .counter.finished {
     -webkit-animation: counter-final 1s ease forwards;
     -moz-animation: counter-final 1s ease forwards;
     -ms-animation: counter-final 1s ease forwards;
     -o-animation: counter-final 1s ease forwards;
     animation: counter-final 1s ease forwards; }
-  .upper-section .fill {
+  .left .todo-box .upper-section .fill {
     background: #33d7b0;
     background: -moz-linear-gradient(top, #33d7be 1%, #06e0e0 100%);
     background: -webkit-linear-gradient(top, #33d7be 1%, #06e0e0 100%);
@@ -594,24 +682,24 @@ body {
     -webkit-box-shadow: 0px 0px 10px rgba(64, 212, 212, 0.8);
     -moz-box-shadow: 0px 0px 10px rgba(64, 212, 212, 0.8);
     box-shadow: 0px 0px 10px rgba(64, 212, 212, 0.8); }
-    .upper-section .fill.animate {
+    .left .todo-box .upper-section .fill.animate {
       animation-name: grow-shrink, final-glow, final-pulse;
       animation-delay: 0s, 2s, 1800ms;
       animation-duration: 2s, 3s, 2000ms;
       animation-fill-mode: forwards;
       animation-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96), ease, ease-in-out; }
-  .upper-section .particle-container, .upper-section .particle-x-container {
+  .left .todo-box .upper-section .particle-container, .left .todo-box .upper-section .particle-x-container {
     display: block;
     position: absolute;
     right: 0px;
     height: 100%;
     width: 1px; }
-  .upper-section .particle-x-container {
+  .left .todo-box .upper-section .particle-x-container {
     left: 0px;
     top: 49px;
     height: 1px;
     width: 100%; }
-  .upper-section .particle, .upper-section .particle-x {
+  .left .todo-box .upper-section .particle, .left .todo-box .upper-section .particle-x {
     background: rgba(200, 220, 255, 0.4);
     display: block;
     position: absolute;
@@ -626,9 +714,9 @@ body {
     -webkit-border-radius: 8px;
     border-radius: 8px;
     background-clip: padding-box; }
-    .upper-section .particle.hidden, .upper-section .hidden.particle-x {
+    .left .todo-box .upper-section .particle.hidden, .left .todo-box .upper-section .hidden.particle-x {
       display: none; }
-  .upper-section .particle-x {
+  .left .todo-box .upper-section .particle-x {
     background: rgba(180, 200, 255, 0.6);
     height: 5px;
     width: 5px;
@@ -640,28 +728,57 @@ body {
     border-radius: 10px;
     background-clip: padding-box; }
 
-.lower-section {
+.left .todo-box .lower-section {
   display: block;
   height: 60%;
-  width: 100%;
-  height: 60vh;
-  width: 100vw; }
-  .lower-section .todo {
+  width: 100%; }
+  .left .todo-box .lower-section .todo {
     margin: 0 auto;
     padding: 25px;
     width: 80%; }
-  .lower-section .todo ul {
+  .left .todo-box .lower-section .todo ul {
     color: #ffffff;
     font-family: "Press Start 2p";
-    font-size: 3em;
+    font-size: 0.8em;
     font-weight: 600;
     text-transform: uppercase;
-    line-height: 2.5em;
-    letter-spacing: 15px; }
-    .lower-section .todo ul li {
+    line-height: 1.8em;
+    letter-spacing: 5px; }
+    .left .todo-box .lower-section .todo ul li {
       opacity: 0;
-      visibility: hidden; }
-      .lower-section .todo ul li.drop-in {
-        animation: task-drop-in 1s ease forwards; }
+      visibility: hidden;
+      margin-bottom: 1.5em; }
+      .left .todo-box .lower-section .todo ul li.drop-in {
+        animation: task-drop-in 150ms ease forwards; }
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 60%;
+  height: 100vh;
+  width: 60vw; }
+  .right .message {
+    padding: 1em; }
+  .right .message .message-header {
+    font-family: "Lady Radical";
+    font-size: 8em;
+    line-height: 1.2em; }
+    .right .message .message-header span {
+      background: #ef2f2f;
+      background: -moz-linear-gradient(top, #ef2e2e 0%, #ef2e2e 5%, #ef6b2e 5%, #ef6b2e 19%, #ed932c 19%, #ed932c 36%, #ffe6e6 36%, #ffe6e6 94%, white 94%);
+      background: -webkit-linear-gradient(top, #ef2e2e 0%, #ef2e2e 5%, #ef6b2e 5%, #ef6b2e 19%, #ed932c 19%, #ed932c 36%, #ffe6e6 36%, #ffe6e6 94%, white 94%);
+      background: linear-gradient(to bottom, #ef2e2e 0%, #ef2e2e 5%, #ef6b2e 5%, #ef6b2e 19%, #ed932c 19%, #ed932c 36%, #ffe6e6 36%, #ffe6e6 94%, white 94%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef2f2f', endColorstr='#ffffff', GradientType=0 );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-fill-color: transparent; }
+  .right .message .message-body {
+    color: #fff;
+    font-size: 2em;
+    font-family: "Press Start 2p";
+    line-height: 1.8em; }
 
 /*# sourceMappingURL=style.css.map */

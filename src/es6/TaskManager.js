@@ -15,7 +15,7 @@ export default class TaskManager {
       let animationDelay = 200;
 
       this.state.elements.tasks.map((task, i, a) => {
-        let delay = (i === 0) ? 0 : (i * animationDelay) + (i * 1000);
+        let delay = (i === 0) ? 0 : (i * animationDelay) + (i * 200);
 
         setTimeout(() => {
           task.className = task.className + " drop-in";

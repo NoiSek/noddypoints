@@ -72,13 +72,16 @@ export default class Counter {
   }
 
   playFinalAnimation() {
+    this.state.elements.counter.className = this.state.elements.counter.className.replace(" increment", "");
     this.state.elements.counter.className += " finished";
   }
 
   playIncrementalAnimation() {
     this.state.elements.counter.className = this.state.elements.counter.className.replace(" increment", "");
     setTimeout(() => {
-      this.state.elements.counter.className += " increment";
-    }, 10);
+      if (this.state.finished === false) {
+        this.state.elements.counter.className += " increment";
+      }
+    }, 15);
   }
 }
