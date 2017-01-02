@@ -4,7 +4,7 @@
   "description": "Completely useless point meter.",
   "main": "src/noddypoints.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --progress --colors --optimize-dedupe --optimize-minimize --optimize-occurrence-order &&",
+    "build": "./node_modules/.bin/webpack --progress --colors --optimize-dedupe --optimize-minimize --optimize-occurrence-order",
     "watch": "./node_modules/.bin/webpack --progress --colors --watch"
   },
   "repository": {
