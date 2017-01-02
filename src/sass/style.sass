@@ -204,14 +204,13 @@ canvas
   height: 60%
   width: 100%
 
-  .todo
-
+  .todo-container
     margin: 0 auto
     padding: 25px
 
     width: 80%
 
-  .todo ul
+  ul.todo
     color: #ffffff
 
     font-family: "Press Start 2p"
@@ -227,10 +226,61 @@ canvas
       opacity: 0
       visibility: hidden
 
-      margin-bottom: 1.5em
+      margin-bottom: 1em
+
+      .task-name-upper, .task-name-lower, .task-name-shadow
+        // The height of these must be half the height of the font-size.
+        height: 0.9em
+
+        position: relative
+
+        overflow: hidden
+
+      .task-name-lower, .task-name-shadow
+        line-height: 0em
+        transform-origin: 5% 50%
+
+      .task-name-shadow
+        color: hsl(182, 15%, 34%)
+
+        top: -0.9em
+
+        z-index: -1
 
       &.drop-in
         animation: task-drop-in 150ms ease forwards
+
+      &.completed .task-name-upper:after
+        content: ""
+        background: hsl(143, 100%, 91%)
+        display: block
+
+        opacity: 0
+
+        position: absolute
+        bottom: 0px
+        right: 0px
+
+        height: 2px
+        width: 2px
+
+        animation-name: task-text-split
+        animation-duration: 1500ms
+        animation-fill-mode: forwards
+        animation-timing-function: ease
+
+      &.completed .task-name-upper
+        animation-name: task-delay-color
+        animation-duration: 1ms
+        animation-fill-mode: forwards
+        animation-delay: 1500ms
+
+      &.completed .task-name-lower
+        animation-name: task-drop-out
+        animation-delay: 1500ms
+        animation-duration: 1500ms
+        animation-fill-mode: forwards
+        animation-timing-function: ease
 
 .right
   display: flex

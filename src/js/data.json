@@ -1,0 +1,43 @@
+{
+  "testguy": {
+    "runningtotal": 0,
+    "tasks": [
+      {
+        "name": "Done Thing",
+        "complete": true,
+        "points": 200
+      },
+      {
+        "name": "Other Task",
+        "complete": true,
+        "points": 500
+      },
+      {
+        "name": "Really Long Objective",
+        "complete": true,
+        "points": 500
+      },
+      {
+        "name": "Save The President",
+        "complete": false,
+        "points": 500
+      },
+      {
+        "name": "Fight Ninjas",
+        "complete": false,
+        "points": 500
+      },
+      {
+        "name": "Eat Plants",
+        "complete": false,
+        "points": 500
+      },
+      {
+        "name": "Acquire Babes",
+        "complete": false,
+        "points": 500
+      }
+    ]
+  },
+  "otherguy": { "test": true }
+}

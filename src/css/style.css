@@ -450,6 +450,31 @@ table {
     color: #360808; }
   100% {
     color: #1f0836; } }
+@-webkit-keyframes task-delay-color {
+  0% {
+    color: #fff; }
+  100% {
+    color: #668485; } }
+@-moz-keyframes task-delay-color {
+  0% {
+    color: #fff; }
+  100% {
+    color: #668485; } }
+@-ms-keyframes task-delay-color {
+  0% {
+    color: #fff; }
+  100% {
+    color: #668485; } }
+@-o-keyframes task-delay-color {
+  0% {
+    color: #fff; }
+  100% {
+    color: #668485; } }
+@keyframes task-delay-color {
+  0% {
+    color: #fff; }
+  100% {
+    color: #668485; } }
 @-webkit-keyframes task-drop-in {
   0% {
     opacity: 0;
@@ -495,6 +520,171 @@ table {
     opacity: 1;
     transform: translateY(0px);
     visibility: visible; } }
+@-webkit-keyframes task-drop-out {
+  0% {
+    opacity: 1;
+    transform: rotate(0deg) translateY(0px);
+    visibility: visible; }
+  100% {
+    opacity: 0;
+    transform: rotate(30deg) translateY(50px);
+    visibility: hidden; } }
+@-moz-keyframes task-drop-out {
+  0% {
+    opacity: 1;
+    transform: rotate(0deg) translateY(0px);
+    visibility: visible; }
+  100% {
+    opacity: 0;
+    transform: rotate(30deg) translateY(50px);
+    visibility: hidden; } }
+@-ms-keyframes task-drop-out {
+  0% {
+    opacity: 1;
+    transform: rotate(0deg) translateY(0px);
+    visibility: visible; }
+  100% {
+    opacity: 0;
+    transform: rotate(30deg) translateY(50px);
+    visibility: hidden; } }
+@-o-keyframes task-drop-out {
+  0% {
+    opacity: 1;
+    transform: rotate(0deg) translateY(0px);
+    visibility: visible; }
+  100% {
+    opacity: 0;
+    transform: rotate(30deg) translateY(50px);
+    visibility: hidden; } }
+@keyframes task-drop-out {
+  0% {
+    opacity: 1;
+    transform: rotate(0deg) translateY(0px);
+    visibility: visible; }
+  100% {
+    opacity: 0;
+    transform: rotate(30deg) translateY(50px);
+    visibility: hidden; } }
+@-webkit-keyframes task-text-split {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  20% {
+    filter: brightness(100%);
+    height: 2px; }
+  30% {
+    filter: brightness(800%);
+    height: 8px; }
+  50% {
+    filter: brightness(100%);
+    opacity: 0.7;
+    height: 1px;
+    width: 8px; }
+  70% {
+    right: 0%; }
+  90% {
+    opacity: 0.7; }
+  100% {
+    opacity: 0;
+    width: 4px;
+    right: 100%; } }
+@-moz-keyframes task-text-split {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  20% {
+    filter: brightness(100%);
+    height: 2px; }
+  30% {
+    filter: brightness(800%);
+    height: 8px; }
+  50% {
+    filter: brightness(100%);
+    opacity: 0.7;
+    height: 1px;
+    width: 8px; }
+  70% {
+    right: 0%; }
+  90% {
+    opacity: 0.7; }
+  100% {
+    opacity: 0;
+    width: 4px;
+    right: 100%; } }
+@-ms-keyframes task-text-split {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  20% {
+    filter: brightness(100%);
+    height: 2px; }
+  30% {
+    filter: brightness(800%);
+    height: 8px; }
+  50% {
+    filter: brightness(100%);
+    opacity: 0.7;
+    height: 1px;
+    width: 8px; }
+  70% {
+    right: 0%; }
+  90% {
+    opacity: 0.7; }
+  100% {
+    opacity: 0;
+    width: 4px;
+    right: 100%; } }
+@-o-keyframes task-text-split {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  20% {
+    filter: brightness(100%);
+    height: 2px; }
+  30% {
+    filter: brightness(800%);
+    height: 8px; }
+  50% {
+    filter: brightness(100%);
+    opacity: 0.7;
+    height: 1px;
+    width: 8px; }
+  70% {
+    right: 0%; }
+  90% {
+    opacity: 0.7; }
+  100% {
+    opacity: 0;
+    width: 4px;
+    right: 100%; } }
+@keyframes task-text-split {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  20% {
+    filter: brightness(100%);
+    height: 2px; }
+  30% {
+    filter: brightness(800%);
+    height: 8px; }
+  50% {
+    filter: brightness(100%);
+    opacity: 0.7;
+    height: 1px;
+    width: 8px; }
+  70% {
+    right: 0%; }
+  90% {
+    opacity: 0.7; }
+  100% {
+    opacity: 0;
+    width: 4px;
+    right: 100%; } }
 @-webkit-keyframes todo-crt-flash-in {
   0% {
     filter: brightness(800%);
@@ -732,11 +922,11 @@ canvas {
   display: block;
   height: 60%;
   width: 100%; }
-  .left .todo-box .lower-section .todo {
+  .left .todo-box .lower-section .todo-container {
     margin: 0 auto;
     padding: 25px;
     width: 80%; }
-  .left .todo-box .lower-section .todo ul {
+  .left .todo-box .lower-section ul.todo {
     color: #ffffff;
     font-family: "Press Start 2p";
     font-size: 0.8em;
@@ -744,12 +934,48 @@ canvas {
     text-transform: uppercase;
     line-height: 1.8em;
     letter-spacing: 5px; }
-    .left .todo-box .lower-section .todo ul li {
+    .left .todo-box .lower-section ul.todo li {
       opacity: 0;
       visibility: hidden;
-      margin-bottom: 1.5em; }
-      .left .todo-box .lower-section .todo ul li.drop-in {
+      margin-bottom: 1em; }
+      .left .todo-box .lower-section ul.todo li .task-name-upper, .left .todo-box .lower-section ul.todo li .task-name-lower, .left .todo-box .lower-section ul.todo li .task-name-shadow {
+        height: 0.9em;
+        position: relative;
+        overflow: hidden; }
+      .left .todo-box .lower-section ul.todo li .task-name-lower, .left .todo-box .lower-section ul.todo li .task-name-shadow {
+        line-height: 0em;
+        transform-origin: 5% 50%; }
+      .left .todo-box .lower-section ul.todo li .task-name-shadow {
+        color: #4a6364;
+        top: -0.9em;
+        z-index: -1; }
+      .left .todo-box .lower-section ul.todo li.drop-in {
         animation: task-drop-in 150ms ease forwards; }
+      .left .todo-box .lower-section ul.todo li.completed .task-name-upper:after {
+        content: "";
+        background: #d1ffe3;
+        display: block;
+        opacity: 0;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        height: 2px;
+        width: 2px;
+        animation-name: task-text-split;
+        animation-duration: 1500ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease; }
+      .left .todo-box .lower-section ul.todo li.completed .task-name-upper {
+        animation-name: task-delay-color;
+        animation-duration: 1ms;
+        animation-fill-mode: forwards;
+        animation-delay: 1500ms; }
+      .left .todo-box .lower-section ul.todo li.completed .task-name-lower {
+        animation-name: task-drop-out;
+        animation-delay: 1500ms;
+        animation-duration: 1500ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease; }
 
 .right {
   display: flex;

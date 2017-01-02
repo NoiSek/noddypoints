@@ -14,6 +14,6 @@ module.exports = {
   },
   "resolve": {
     "extensions": ["", ".js", ".min.js"],
-    "modulesDirectories": ["./src/dist/js"],
+    "modulesDirectories": ["./src/dist/js", "./node_modules"],
   }
 };
