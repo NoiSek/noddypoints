@@ -654,6 +654,8 @@
 
 	var CanvasBackground = function () {
 	  function CanvasBackground() {
+	    var _this = this;
+
 	    _classCallCheck(this, CanvasBackground);
 
 	    this.fps = 120;
@@ -670,6 +672,10 @@
 
 	    // Draw our background
 	    this.drawInitialBackground(elements.canvasBackground);
+
+	    setInterval(function () {
+	      _this.drawInitialBackground(elements.canvasBackground);
+	    }, 10000);
 
 	    // Store star context, as we will be manipulating this every frame.
 	    var context = elements.canvasStars.getContext('2d');
@@ -690,6 +696,7 @@
 	    key: "drawInitialBackground",
 	    value: function drawInitialBackground(el) {
 	      var context = el.getContext('2d');
+	      context.clearRect(0, 0, el.width, el.height);
 
 	      var verticalWindowMedian = el.height / 2;
 	      var horizontalEndPoint = el.width;
@@ -756,9 +763,9 @@
 	  }, {
 	    key: "loop",
 	    value: function loop() {
-	      var _this = this;
+	      var _this2 = this;
 
-	      // First, we fade out by 1%
+	      // First, we fade out by 30%
 	      var context = this.state.context;
 
 	      context.globalCompositeOperation = 'destination-out';
@@ -793,7 +800,7 @@
 	      }
 
 	      setTimeout(function () {
-	        window.requestAnimationFrame(_this.loop.bind(_this));
+	        window.requestAnimationFrame(_this2.loop.bind(_this2));
 	      }, 1000 / this.fps);
 	    }
 	  }]);

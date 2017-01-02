@@ -73,6 +73,10 @@ export default class CanvasBackground {
     // Draw our background
     this.drawInitialBackground(elements.canvasBackground);
 
+    setInterval(() => {
+      this.drawInitialBackground(elements.canvasBackground);
+    }, 10000);
+
     // Store star context, as we will be manipulating this every frame.
     let context = elements.canvasStars.getContext('2d');
 
@@ -90,6 +94,7 @@ export default class CanvasBackground {
 
   drawInitialBackground(el) {
     let context = el.getContext('2d');
+    context.clearRect(0, 0, el.width, el.height);
 
     let verticalWindowMedian = el.height / 2;
     let horizontalEndPoint = el.width;
@@ -149,7 +154,7 @@ export default class CanvasBackground {
   }
 
   loop() {
-    // First, we fade out by 1%
+    // First, we fade out by 30%
     let context = this.state.context;
 
     context.globalCompositeOperation = 'destination-out';
