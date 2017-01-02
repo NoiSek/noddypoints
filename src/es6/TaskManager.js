@@ -16,9 +16,17 @@ export default class TaskManager {
       "url": "src/js/data.json",
       "method": "get",
       "success": (response) => {
-        let data = JSON.parse(response.response);
-        this.state.loaded = true;
+        let data;
+
+        // Treat as pure JSON response when live, an XMLHTTPRequest otherwise.
+        if (response.status !== undefined) {
+          data = JSON.parse(response.response);
+        } else {
+          data = response;
+        }
+
         this.state.tasks = data.testguy.tasks;
+        this.state.loaded = true;
       }
     });
   }
